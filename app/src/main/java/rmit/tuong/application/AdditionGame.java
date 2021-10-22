@@ -20,12 +20,11 @@ public class AdditionGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addition_game);
         setTitle("Math Speed Quiz");
-        setTitleColor(1);
         // initial all components
         initial();
 
         //start game
-        game = new GamePlay(":", 50);
+        game = new GamePlay();
         startGame();
 
         // set onClick for all numbers buttons

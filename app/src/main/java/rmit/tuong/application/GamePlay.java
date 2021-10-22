@@ -23,28 +23,31 @@ public class GamePlay {
     private int limit;
     private Expression current;
 
-    public GamePlay(String s, int limit){
-        this.limit = limit;
+    public GamePlay(){
         numOfCorrect = 0;
         total = 0;
         score = 0;
         Random rand = new Random();
         int int_random = rand.nextInt(4);
         this.sign = signsList.get(int_random);
-        current = new Expression(this.sign, limit);
+        current = new Expression(this.sign, 10);
         expressionList = new ArrayList<Expression>();
     }
     public void createNewExpression() {
         Random rand = new Random();
         int int_random = rand.nextInt(4);
         this.sign = signsList.get(int_random);
-        current = new Expression(this.sign, limit);
+        current = new Expression(this.sign, generateLimit());
         total++;
         expressionList.add(current);
     }
 
+    public int generateLimit(){
+        return (numOfCorrect /3) * 10 +10;
+    }
+
     public boolean checkAns (int answer){
-        boolean flag =false;
+        boolean flag;
         if(current.getAnswer() == answer){
             flag =true;
             numOfCorrect++;
