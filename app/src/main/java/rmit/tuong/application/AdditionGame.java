@@ -2,7 +2,10 @@ package rmit.tuong.application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -14,7 +17,32 @@ public class AdditionGame extends AppCompatActivity {
     Button btn_0, btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9, btn_clear, btn_ok;
     TextView txt_answer, txt_question, txt_countdown, txt_score;
     ProgressBar progress_countdown;
-    GamePlay game;
+    GamePlay game =new GamePlay();;
+    int timeRemain = 45;
+    CountDownTimer countDownTimer = new CountDownTimer(45000, 1000) {
+        @Override
+        public void onTick(long l) {
+            timeRemain--;
+            txt_countdown.setText(timeRemain + " sec");
+            progress_countdown.setProgress(timeRemain);
+        }
+
+        @Override
+        public void onFinish() {
+            Toast.makeText(AdditionGame.this, "Time up!", Toast.LENGTH_SHORT).show();
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(AdditionGame.this, ResultActivity.class);
+                    intent.putExtra("score", game.getScore());
+                    startActivity(intent);
+                }
+            },2000);
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,9 +52,8 @@ public class AdditionGame extends AppCompatActivity {
         initial();
 
         //start game
-        game = new GamePlay();
         startGame();
-
+        countDownTimer.start();
         // set onClick for all numbers buttons
         View.OnClickListener numberClickListener = new View.OnClickListener() {
             @Override
@@ -119,4 +146,6 @@ public class AdditionGame extends AppCompatActivity {
         // progressBar
         progress_countdown = findViewById(R.id.progress_countdown);
     }
+
+
 }

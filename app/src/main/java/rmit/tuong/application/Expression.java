@@ -43,15 +43,15 @@ public class Expression {
         }
 
         if(this.sign.equals("x")){
-            this.firstNum = maker.nextInt(limit);
-            this.secondNum = maker.nextInt(limit);
+            this.firstNum = maker.nextInt(limit/2);
+            this.secondNum = maker.nextInt(limit/2);
             this.question = firstNum + " " +sign+ " " +secondNum;
             this.answer = this.firstNum * this.secondNum;
         }
 
         if(this.sign.equals(":")){
-            int tmp1 = maker.nextInt(limit);
-            int tmp2 = maker.nextInt(limit);
+            int tmp1 = maker.nextInt(limit/2);
+            int tmp2 = maker.nextInt(limit/2);
             if (tmp1 == 0){
                 tmp1+=1;
             }

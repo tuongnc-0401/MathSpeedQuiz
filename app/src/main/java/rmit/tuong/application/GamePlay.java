@@ -43,7 +43,7 @@ public class GamePlay {
     }
 
     public int generateLimit(){
-        return (numOfCorrect /3) * 10 +10;
+        return (numOfCorrect /3) * 15 +10;
     }
 
     public boolean checkAns (int answer){
