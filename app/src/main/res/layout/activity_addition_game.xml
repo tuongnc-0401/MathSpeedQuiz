@@ -31,10 +31,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_countdown" />
+        app:layout_constraintTop_toBottomOf="@+id/progress_countdown1" />
 
     <ProgressBar
-        android:id="@+id/progress_countdown"
+        android:id="@+id/progress_countdown1"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -244,7 +244,7 @@
     </TableLayout>
 
     <TextView
-        android:id="@+id/txt_countdown"
+        android:id="@+id/txt_countdown2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -252,10 +252,10 @@
         android:text="60sec"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_countdown" />
+        app:layout_constraintTop_toBottomOf="@+id/progress_countdown1" />
 
     <TextView
-        android:id="@+id/txt_score"
+        android:id="@+id/txt_score2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -263,6 +263,6 @@
         android:text="0 pts"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_countdown" />
+        app:layout_constraintTop_toBottomOf="@+id/progress_countdown1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

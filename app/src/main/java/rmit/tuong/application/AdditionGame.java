@@ -17,7 +17,8 @@ public class AdditionGame extends AppCompatActivity {
     Button btn_0, btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9, btn_clear, btn_ok;
     TextView txt_answer, txt_question, txt_countdown, txt_score;
     ProgressBar progress_countdown;
-    GamePlay game =new GamePlay();;
+    GamePlay game =new GamePlay();
+    // countdown 45 seconds
     int timeRemain = 45;
     CountDownTimer countDownTimer = new CountDownTimer(45000, 1000) {
         @Override
@@ -37,6 +38,7 @@ public class AdditionGame extends AppCompatActivity {
                     Intent intent = new Intent(AdditionGame.this, ResultActivity.class);
                     intent.putExtra("score", game.getScore());
                     startActivity(intent);
+                    finish();
                 }
             },2000);
 
@@ -67,7 +69,7 @@ public class AdditionGame extends AppCompatActivity {
 
             }
         };
-
+        // set onClick for all button numbers
         btn_0.setOnClickListener(numberClickListener);
         btn_1.setOnClickListener(numberClickListener);
         btn_2.setOnClickListener(numberClickListener);
@@ -140,12 +142,19 @@ public class AdditionGame extends AppCompatActivity {
         // initialize Text View
         txt_answer = findViewById(R.id.txt_answer);
         txt_question = findViewById(R.id.txt_question);
-        txt_countdown = findViewById(R.id.txt_countdown);
-        txt_score = findViewById(R.id.txt_score);
+        txt_countdown = findViewById(R.id.txt_countdown2);
+        txt_score = findViewById(R.id.txt_score2);
 
         // progressBar
-        progress_countdown = findViewById(R.id.progress_countdown);
+        progress_countdown = findViewById(R.id.progress_countdown1);
     }
 
+    @Override
+    public void onBackPressed() {
+        countDownTimer.cancel();
+        Intent i2 = new Intent(AdditionGame.this, MainActivity.class);
+        i2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i2);
 
+    }
 }

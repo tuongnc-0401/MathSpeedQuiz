@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/RMIT/Android/Application/app/src/main/res/layout/activity_addition_game.xml" value="0.25416666666666665" />
+        <entry key="..\:/RMIT/Android/Application/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/RMIT/Android/Application/app/src/main/res/layout/activity_addition_game.xml" value="0.1" />
         <entry key="..\:/RMIT/Android/Application/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/RMIT/Android/Application/app/src/main/res/layout/activity_result.xml" value="0.25416666666666665" />
+        <entry key="..\:/RMIT/Android/Application/app/src/main/res/layout/activity_true_false_game.xml" value="0.2" />
       </map>
     </option>
   </component>
