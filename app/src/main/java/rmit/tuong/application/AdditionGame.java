@@ -20,7 +20,7 @@ public class AdditionGame extends AppCompatActivity {
     GamePlay game =new GamePlay();
     // countdown 45 seconds
     int timeRemain = 45;
-    CountDownTimer countDownTimer = new CountDownTimer(45000, 1000) {
+    CountDownTimer countDownTimer = new CountDownTimer(timeRemain * 1000, 1000) {
         @Override
         public void onTick(long l) {
             timeRemain--;
@@ -30,6 +30,7 @@ public class AdditionGame extends AppCompatActivity {
 
         @Override
         public void onFinish() {
+            countDownTimer.cancel();
             Toast.makeText(AdditionGame.this, "Time up!", Toast.LENGTH_SHORT).show();
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -37,6 +38,7 @@ public class AdditionGame extends AppCompatActivity {
                 public void run() {
                     Intent intent = new Intent(AdditionGame.this, ResultActivity.class);
                     intent.putExtra("score", game.getScore());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
                 }

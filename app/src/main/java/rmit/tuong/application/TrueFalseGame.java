@@ -21,7 +21,7 @@ public class TrueFalseGame extends AppCompatActivity {
 
 
     // Count down for each question
-    int timeRemain = 10; // each question has 10 seconds
+    int timeRemain = 11; // each question has 10 seconds
     CountDownTimer countDownTimer = new CountDownTimer(timeRemain * 1000, 1000) {
         @Override
         public void onTick(long l) {
@@ -34,6 +34,7 @@ public class TrueFalseGame extends AppCompatActivity {
         public void onFinish() {
             // notify TIME UP
             Toast.makeText(TrueFalseGame.this, "Time up!", Toast.LENGTH_SHORT).show();
+            countDownTimer.cancel();
             // Delay 2 seconds and than move to Result screen
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -41,10 +42,11 @@ public class TrueFalseGame extends AppCompatActivity {
                 public void run() {
                     Intent intent = new Intent(TrueFalseGame.this, ResultActivity.class);
                     intent.putExtra("score", game.getScore());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
                 }
-            }, 2000);
+            }, 1000);
 
         }
     };
@@ -113,7 +115,7 @@ public class TrueFalseGame extends AppCompatActivity {
             startGame();
             countDownTimer.cancel();
 
-            timeRemain = 10 - (game.getNumOfCorrect() / 4);
+            timeRemain = 11 - (game.getNumOfCorrect() / 4);
             if (timeRemain < 5) {
                 timeRemain = 5;
             }
@@ -130,6 +132,7 @@ public class TrueFalseGame extends AppCompatActivity {
                     Intent intent = new Intent(TrueFalseGame.this, ResultActivity.class);
                     intent.putExtra("score", game.getScore());
                     intent.putExtra("msg", 1);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
                 }

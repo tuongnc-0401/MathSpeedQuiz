@@ -156,6 +156,7 @@ public class ExpressionTrueFalse {
     private int generateWrongRes(int trueRes) {
         Random maker = new Random();
         int res = maker.nextInt(10);
+        if (res == 0) res+=1;
         return res;
     }
 }
