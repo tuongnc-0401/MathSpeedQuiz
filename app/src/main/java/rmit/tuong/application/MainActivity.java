@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         // initialize all components
         initial();
 
-        // onClick function for buttons
+        // go to Game 1
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+        //go to Game 2
         btn_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    // initialize components
     private void initial() {
         btn_add = findViewById(R.id.btn_add);
         btn_2 = findViewById(R.id.btn2);

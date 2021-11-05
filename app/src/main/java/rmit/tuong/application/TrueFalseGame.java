@@ -140,6 +140,7 @@ public class TrueFalseGame extends AppCompatActivity {
         }
     }
 
+    // when user press the back press, it clear everything and go to Main Activity
     @Override
     public void onBackPressed() {
         countDownTimer.cancel();

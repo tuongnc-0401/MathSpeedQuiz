@@ -1,7 +1,7 @@
 package rmit.tuong.application;
 
 import java.util.Random;
-
+// Model of Question for Game 1
 public class Expression {
     private int firstNum;
     private int secondNum;
@@ -14,13 +14,10 @@ public class Expression {
     private String sign;
 
     public Expression(String s, int limit) {
-
         //set sign
         this.sign = s;
         // random 2 nums
         Random maker = new Random();
-
-
 
         if(this.sign.equals("+")){
             this.firstNum = maker.nextInt(limit);
@@ -58,8 +55,6 @@ public class Expression {
             if (tmp2 == 0){
                 tmp2+=1;
             }
-
-
             this.firstNum = tmp1 * tmp2;
             this.secondNum = tmp1;
             this.question = firstNum + " " +sign+ " " +secondNum;

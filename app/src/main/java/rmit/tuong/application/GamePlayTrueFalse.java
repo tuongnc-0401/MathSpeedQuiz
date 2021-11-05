@@ -3,7 +3,7 @@ package rmit.tuong.application;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+// Generate the game for game 2
 public class GamePlayTrueFalse {
 
     private List<ExpressionTrueFalse> expressionList;
@@ -11,10 +11,10 @@ public class GamePlayTrueFalse {
     private int numOfIncorrect;
     private int total;
     private int score;
-
     private int limit;
     private ExpressionTrueFalse current;
 
+    // constructor for new game
     public GamePlayTrueFalse(){
         numOfCorrect = 0;
         total = 0;
@@ -22,16 +22,21 @@ public class GamePlayTrueFalse {
         current = new ExpressionTrueFalse( 50);
         expressionList = new ArrayList<ExpressionTrueFalse>();
     }
+
+    // create a new question and add to list
     public void createNewExpression() {
         current = new ExpressionTrueFalse(generateLimit());
         total++;
         expressionList.add(current);
     }
 
+    // generate a max num for a question ( more true answers, question will be more difficult)
     public int generateLimit(){
         return (numOfCorrect /3) * 15 +50;
     }
 
+
+    // get the answer of user and check true or false
     public boolean checkAns (int answer){
         boolean flag;
         if(current.getAnswer() == answer){
@@ -47,6 +52,7 @@ public class GamePlayTrueFalse {
 
 
 
+    // getter and setter
     public List<ExpressionTrueFalse> getExpressionList() {
         return expressionList;
     }

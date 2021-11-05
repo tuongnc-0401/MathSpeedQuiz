@@ -3,6 +3,7 @@ package rmit.tuong.application;
 import java.util.ArrayList;
 import java.util.Random;
 
+// Model of Question for Game 2
 public class ExpressionTrueFalse {
     private int firstNum;
     private int secondNum;

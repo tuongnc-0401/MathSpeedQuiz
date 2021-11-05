@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
+// generate one game for game 1
 public class GamePlay {
     private List<Expression> expressionList;
     private int numOfCorrect;
@@ -23,6 +23,7 @@ public class GamePlay {
     private int limit;
     private Expression current;
 
+    // constructor for one game.
     public GamePlay(){
         numOfCorrect = 0;
         total = 0;
@@ -33,6 +34,8 @@ public class GamePlay {
         current = new Expression(this.sign, 10);
         expressionList = new ArrayList<Expression>();
     }
+
+    // create a new question and add to list
     public void createNewExpression() {
         Random rand = new Random();
         int int_random = rand.nextInt(4);
@@ -42,10 +45,12 @@ public class GamePlay {
         expressionList.add(current);
     }
 
+    // generate a max num of one question
     public int generateLimit(){
         return (numOfCorrect /3) * 15 +10;
     }
 
+    // get the ans of user and check true or false
     public boolean checkAns (int answer){
         boolean flag;
         if(current.getAnswer() == answer){
@@ -59,6 +64,7 @@ public class GamePlay {
         return flag;
     }
 
+    // getter and setter
     public List<Expression> getExpressionList() {
         return expressionList;
     }

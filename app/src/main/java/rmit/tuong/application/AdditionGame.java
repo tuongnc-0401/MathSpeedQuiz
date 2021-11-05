@@ -22,16 +22,18 @@ public class AdditionGame extends AppCompatActivity {
     int timeRemain = 45;
     CountDownTimer countDownTimer = new CountDownTimer(timeRemain * 1000, 1000) {
         @Override
-        public void onTick(long l) {
+        public void onTick(long l) { // display sec on the screen
             timeRemain--;
             txt_countdown.setText(timeRemain + " sec");
             progress_countdown.setProgress(timeRemain);
         }
 
+        // when time run out, move to result screen and notify score
         @Override
         public void onFinish() {
             countDownTimer.cancel();
             Toast.makeText(AdditionGame.this, "Time up!", Toast.LENGTH_SHORT).show();
+            // delay 2sec and move to result screen.
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -63,7 +65,6 @@ public class AdditionGame extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Button btnClicked = (Button) view;
-
                 int answerValue = Integer.parseInt(btnClicked.getText().toString());
                 int currentValue = Integer.parseInt(txt_answer.getText().toString());
                 int newValue = currentValue * 10 + answerValue;
@@ -97,16 +98,18 @@ public class AdditionGame extends AppCompatActivity {
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // get the answer of this question
                int answerResult = Integer.parseInt(txt_answer.getText().toString());
                int answerCheck = game.getCurrent().getAnswer();
+                // check the true or false
                 boolean flag = game.checkAns(answerResult);
-
+                // if true, increase point
                 if(flag){
                     Toast.makeText(AdditionGame.this, "Correct!", Toast.LENGTH_SHORT).show();
                     txt_score.setText(Integer.toString(game.getScore()) + " pts");
                     txt_answer.setText("0");
                     startGame();
-                } else {
+                } else { // if wrong, notify for users.
                     txt_answer.setText("0");
                     Toast.makeText(AdditionGame.this, "Wrong Answer! ", Toast.LENGTH_SHORT).show();
                 }
@@ -118,6 +121,7 @@ public class AdditionGame extends AppCompatActivity {
 
     }
 
+    // start game by creating a new question
     private void startGame() {
         game.createNewExpression();
         int answer =  game.getCurrent().getAnswer();
@@ -151,6 +155,7 @@ public class AdditionGame extends AppCompatActivity {
         progress_countdown = findViewById(R.id.progress_countdown1);
     }
 
+    // when user press the back press, it clear everything and go to Main Activity
     @Override
     public void onBackPressed() {
         countDownTimer.cancel();

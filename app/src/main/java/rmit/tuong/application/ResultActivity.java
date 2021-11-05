@@ -48,6 +48,7 @@ public class ResultActivity extends AppCompatActivity {
     }
 
 
+    // when user press the back press, it clear everything and go to Main Activity
     @Override
     public void onBackPressed() {
         Intent i2 = new Intent(ResultActivity.this, MainActivity.class);
